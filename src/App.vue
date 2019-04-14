@@ -33,7 +33,7 @@
   /* To limit the menu width to the content of the menu: */
   /* display: inline-block; */
   /* Or set the width explicitly: */
-  width: 25%;
+  width: 308px !important;
   text-align: left;
   background: #aaa;
 }
@@ -44,21 +44,29 @@
   padding: 20px 20px;
   background-color: #00FFFF;
   margin-bottom: 10px;
+  width: 308px !important;
+
 }
 
 .pure-menu-link {
   color: #fff;
   padding: 10px 20px;
   font-weight: 800;
+  width: 308px !important;
+
 }
 
 .pure-menu-link:hover {
   background: #333;
+  width: 308px !important;
+
 }
 
 .pure-menu-link.router-link-exact-active {
   background: #fff;
   color: #F2385A;
+  width: 308px !important;
+
 }
 
 .content {

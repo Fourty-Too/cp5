@@ -1,18 +1,8 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 style="font-size: 50px;">Food Tracker</h1>
+    <img alt="logo" src="../assets/img.jpg" style="width: 50%;">
+    <p>Use this app to keep track of your daily food intake and make sure you're
+    keeping on track!</p>
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
-</script>

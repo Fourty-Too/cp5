@@ -23,4 +23,7 @@ app.use("/api/users", users.routes);
 const days = require("./days.js");
 app.use("/api/days", days.routes);
 
+const food = require("./food.js");
+app.use("/api/food", food.routes);
+
 app.listen(3003, () => console.log('Server listening on port 3003!'));

@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Register from './views/Register.vue'
 import MyPage from './views/MyPage.vue'
 import Login from './views/Login.vue'
+import Day from './views/Day.vue'
 
 
 Vue.use(Router)
@@ -31,6 +32,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/day',
+      name: 'day',
+      component: Day
     }
   ]
 })

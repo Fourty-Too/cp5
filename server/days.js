@@ -21,8 +21,8 @@ const daySchema = new mongoose.Schema({
   },
   path: String,
   date: String,
-  calorieGoal: String,
-  calorieActual: String,
+  calorieGoal: Number,
+  calorieActual: Number,
 });
 
 const Day = mongoose.model('Day', daySchema);
@@ -59,6 +59,29 @@ router.get("/", auth.verifyToken, User.verify, async (req, res) => {
     return res.sendStatus(500);
   }
 });
+
+router.get("/:id", async(req, res) => {
+  try {
+    let day = await Day.findOne({"_id": req.params.id}).populate('user');
+    return res.send(day);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
+router.put("/:id", async(req, res) => {
+  try {
+    console.log("This was called");
+    console.log(req.body);
+
+    await Day.update({"_id": req.body.data._id}, req.body.data, function(error, values) {
+      //Do nothing
+    });
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 module.exports = {
   model: Day,

@@ -1,17 +1,19 @@
 <template>
 <div>
-  <div class="day">
+  <div class="day2">
     <p class="dayDate">Date</p>
     <p class="dayGoal">Calorie Goal</p>
     <p class="dayActual">Calories Consumed</p>
   </div>
   <hr />
   <div v-for="day in days" v-bind:key="day._id">
-    <div class="day">
-      <p class="dayDate">{{day.date}}</p>
-      <p class="dayGoal">{{day.calorieGoal}}</p>
-      <p class="dayActual">{{day.calorieActual}}</p>
-    </div>
+    <router-link :to="{ path: '/day', query: { id: day._id }}"><a href="#"><div class="day">
+      <p class="dayDate" style="color: #000;">{{day.date}}</p>
+      <p class="dayGoal" style="color: #000;"><b>{{day.calorieGoal}}</b></p>
+      <p v-if="day.calorieActual < day.calorieGoal" class="dayActual" style="color: #00FF00;"><b>{{day.calorieActual}}</b></p>
+      <p v-else-if="day.calorieActual > day.calorieGoal" class="dayActual" style="color: #FF0000;"><b>{{day.calorieActual}}</b></p>
+      <p v-else class="dayActual" style="color: #000;"><b>{{day.calorieActual}}</b></p>
+    </div></a></router-link>
     <hr />
   </div>
 </div>
@@ -29,10 +31,18 @@ export default {
 
 <style scoped>
 .day {
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.day2 {
   margin: 0 0 1.5em;
   display: flex;
   width: 100%;
 }
+
 .dayDate {
   margin: 0px;
   font-size: 1.2em;
@@ -57,4 +67,17 @@ p {
   margin: 0px;
 }
 
+a {
+  text-decoration: none;
+  text-color: none;
+}
+
+hr {
+  margin: 0px;
+  padding: 0px;
+}
+
+.day:hover {
+  background-color: #D3D3D3;
+}
 </style>

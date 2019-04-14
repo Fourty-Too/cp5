@@ -7,12 +7,12 @@
           <h1 class="modal-title">Upload</h1>
         </div>
         <div class="modal-body">
-          <p v-if="error" class="error">{{error}}</p>
+          <p v-if="errorMsg" class="error">{{errorMsg}}</p>
           <form @submit.prevent="addDay">
             <h2>Add a new day to the food tracker</h2>
             <input v-model="date" placeholder="Date">
             <p></p>
-            <textarea v-model="calorieGoal" placeholder="Today's Calorie Goal"></textarea>
+            <input oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')" v-model="calorieGoal" placeholder="Today's Calorie Goal">
             <p></p>
             <button type="button" @click="close" class="pure-button">Close</button>
             <button type="submit" class="pure-button pure-button-secondary">Upload</button>
@@ -35,7 +35,7 @@ export default {
       date: '',
       calorieGoal: '',
       calorieActual: '',
-      error: '',
+      errorMsg: '',
     }
   },
   methods: {
@@ -44,6 +44,13 @@ export default {
     },
     async addDay() {
       try {
+        if (this.date == "" || this.calorieGoal == "") {
+          this.errorMsg = "Both fields required";
+          return
+        }
+        else {
+          this.errorMsg = "";
+        }
         const formData = new FormData();
         formData.append('date', this.date);
         formData.append('calorieGoal', this.calorieGoal);
